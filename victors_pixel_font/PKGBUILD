@@ -1,0 +1,16 @@
+pkgname=ttf-victor-pixel-font
+pkgver=1.0
+pkgrel=1
+pkgdesc="A pixelated font."
+url="https://github.com/izedamo/fonts"
+arch=(any)
+license=('OFL')
+makedepends=('git')
+source=("git+${url}.git")
+sha256sums=('SKIP')
+
+package() {
+    cd "$srcdir/fonts/victors_pixel_font"
+
+    find . -iname '*.ttf' -execdir install -Dm644 {} $pkgdir/usr/share/fonts/TTF/{} \;
+}
